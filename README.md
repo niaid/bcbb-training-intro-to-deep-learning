@@ -34,7 +34,7 @@ Where, `./envs` is the directory you want to install to and `myname` is the name
 *Note For Mac Users! - If you run into problems with the scripts crashing, you might also need to also install the `nomkl` package to prevent a multithreading bug in `numpy`. This is not included in the environment YAML file so first activate the `tflow` environment and install with `conda install nomkl`)*
 
 Feel free to use the editor of your choice, but if you are looking for a free python editor with nice graphical user interface (similar to RStudio), I recommend [Spyder](https://www.spyder-ide.org/). You can install this by first activating the `tflow` environment, and then typing (note the version):
-`pip install spyder==5.2`
+`pip install spyder==5.2 spyder-kernels==2.1.0`
 
 You can then start it inside the `tflow` environment by typing `spyder` (on a Unix system try `spyder &` to have it run in the background). There are also installers available on the Spyder website if you prefer. Note, that [Quatro](https://quarto.org/docs/tools/rstudio.html) also allows RStudio to seamlessly run Python notebooks as well if you prefer.
 
