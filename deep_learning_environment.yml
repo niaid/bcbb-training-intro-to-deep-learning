@@ -1,4 +1,4 @@
-name: deep_learning
+name: tflow
 channels:
   - defaults
 dependencies:
@@ -13,3 +13,4 @@ dependencies:
   - pip:
     - tensorflow==2.5
     - tensorboard==2.5
+    - keras-nlp==0.3.0
