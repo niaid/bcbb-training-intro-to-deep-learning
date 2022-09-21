@@ -13,4 +13,6 @@ dependencies:
   - pip:
     - tensorflow==2.5
     - tensorboard==2.5
+    - protobuf==3.9.2
     - keras-nlp==0.3.0
+    - tensorflow-text==2.10
