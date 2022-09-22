@@ -14,4 +14,3 @@ dependencies:
     - protobuf==3.9.2
     - keras-nlp==0.3.0
     - tensorflow-text==2.10
-    - spyder==5.2
