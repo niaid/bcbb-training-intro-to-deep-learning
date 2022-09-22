@@ -2,7 +2,7 @@
 
 Slides and example scripts for running deep neural networks using Keras and TensorFlow v2 in Python and R will be uploaded the day of the class.
 
-Please prepare by installing the necessary packages for Python or R below. Note this may require help from IT if you do not have admin rights on your machine. If you run into issues with your own machine, you should be able to install these envonments on either the NIAID Locus or NIH Biowulf HPCs by loading the anaconda or R modules. 
+Please prepare by installing the necessary packages for Python or R below and use the "hello world" example script in the respective R and Python folders to confirm everything works. Note, this may require help from IT if you do not have admin rights on your machine. If you run into issues with your own machine, you should be able to install these envonments on either the NIAID Locus or NIH Biowulf HPCs by loading the Anaconda or R modules. 
 
 ## Installing the environment on your own machine
 
