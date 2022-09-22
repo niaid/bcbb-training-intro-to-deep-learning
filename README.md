@@ -45,4 +45,10 @@ You can then start it inside the `tflow` environment by typing `spyder` (on a Un
 
 ## R Users
 
-For R users I highly recommend using RStudio to run your scripts and to install your library packages. 
+For R users, I highly recommend using RStudio to run your scripts and to install your library packages. You will need to install the following packages:
+  * reticulate
+  * tensorflow
+  * keras
+  * pROC
+
+A basic install for tensorflow requires you to run the command `install_tensorflow()` *after* you install the main tensorflow package. Full installation details are available on the [RStudio Tensorflow site](https://tensorflow.rstudio.com/install/).  
