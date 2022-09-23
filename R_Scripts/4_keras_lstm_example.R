@@ -92,27 +92,27 @@ history <- model %>% fit(x_train, y_train, batch_size = num_batches, epochs = nu
 plot(history)
 
 print("Testing prediction performance...")
-preds <- model %>% predict(x_test) %>% `>`(0.5) %>% k_cast(dtype="int32") # if this wasn't binary prediction, after predict pipe to k_argmax
+preds <- model %>% predict(x_test) %>% `>`(0.5) %>% k_cast(dtype="int32") %>% as.list()# if this wasn't binary prediction, after predict pipe to k_argmax
 
 # Calculate performance stats
 cm <- data.frame(tn=0,fn=0,fp=0,tp=0) #confusion matrix
-cm[, c("tn","fn","fp","tp")] <- table(Actual=y_test,Predicted=as.list(preds))
+cm[, c("tn","fn","fp","tp")] <- table(Actual=y_test,Predicted=preds)
 sens <- cm$tp / (cm$tp + cm$fn) * 100.0
 spec <- cm$tn / (cm$tn + cm$fp) * 100.0
 prec <- cm$tp / (cm$tp + cm$fp) * 100.0
 acc <- (cm$tp + cm$tn) / (cm$tn + cm$fp + cm$fn + cm$tp) * 100.0
-auroc <- roc(y_test, as.list(preds), levels=c(0,1), direction='<') %>% auc() #from pROC package
+auroc <- roc(y_test, preds, levels=c(0,1), direction='<') %>% auc() #from pROC package
 
 # For MCC here we use as.numerics to prevent overflows, R-ints are still 32bit!
 mcc_numerator <- as.numeric(cm$tp * cm$tn) - as.numeric(cm$fp * cm$fn) 
 mcc_denominator <- sqrt(as.numeric(cm$tp + cm$fp) * as.numeric(cm$tp + cm$fn) * as.numeric(cm$tn + cm$fp) * as.numeric(cm$tn + cm$fn)) 
 
-cat("TP: ", cm$tp, ", TN: ", cm$tn, ", FP: ", cm$fp, ", FN: ", cm$fn)
-cat(" Sensitivity: ", round(sens,4))
-cat(" Specificity: ", round(spec,4))
-cat(" Accuracy: ", round(acc,4))
-cat(" MCC: ", round(mcc_numerator/mcc_denominator,4))
-cat(" Area Under ROC: ", round(auroc,4))
-cat(" Precision: ", round(prec,4))
+cat("\nTP: ", cm$tp, ", TN: ", cm$tn, ", FP: ", cm$fp, ", FN: ", cm$fn)
+cat("\nSensitivity: ", round(sens,4))
+cat("\nSpecificity: ", round(spec,4))
+cat("\nAccuracy: ", round(acc,4))
+cat("\nMCC: ", round(mcc_numerator/mcc_denominator,4))
+cat("\nArea Under ROC: ", round(auroc,4))
+cat("\nPrecision: ", round(prec,4))
 
 # END OF PROGRAM
