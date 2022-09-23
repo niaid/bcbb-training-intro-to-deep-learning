@@ -22,6 +22,9 @@ Last Updated: 12.09.2021 - Updated plot code for xticks
 
 from __future__ import print_function # python3 print support
 
+import os
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import datasets # scikit-learn provides iris data
@@ -34,7 +37,7 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras.utils import to_categorical
 
 # These are some basic settings for how to train our model
-num_epochs = 10  # Rounds of training
+num_epochs = 100  # Rounds of training
 num_batches = 16 # No. of samples per patch to train at a time
 
 # Function to enable us to plot our training history
@@ -88,7 +91,9 @@ y_test = to_categorical(iris.y[74:],3)
 # Q: Why is the number of units in the last layer set to 3?
 model = Sequential()
 model.add(Dense(10, input_shape=(4,)))
-model.add(Dense(3,activation='softmax'))
+model.add(Dense(5))
+model.add(Dense(3,activation='softmax'))   #    <  0  ,  0,  0  >
+           
 
 # Compile our model- need to do this before using it
 model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
