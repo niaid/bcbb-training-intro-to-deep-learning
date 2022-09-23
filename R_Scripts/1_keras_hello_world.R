@@ -70,6 +70,6 @@ model <- load_model_hdf5("my_model.h5")
 # Let's see how we did!
 print("Making predictions...")
 scores <- model %>% evaluate(x_test, y_test)
-print(scores)
+cat("Testing Loss: ", scores['loss'], "| Testing Accuracy: ", scores['accuracy'] * 100.0, "%") 
 
 # End Program
